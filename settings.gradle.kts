@@ -24,3 +24,8 @@ dependencyResolutionManagement {
 
 rootProject.name = "TeamTies"
 include(":app")
+include(":core:model")
+include(":core:ui")
+include(":core:essentials")
+include(":feature:auth")
+include(":feature:employees")
