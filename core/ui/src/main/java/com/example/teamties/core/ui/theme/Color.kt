@@ -1,4 +1,4 @@
-package com.example.teamties.presentation.ui.theme
+package com.example.teamties.core.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
