@@ -1,7 +1,7 @@
-package com.example.teamties.domain.usecase
+package com.example.teamties.feature.employees.domain.usecase
 
-import com.example.teamties.domain.model.Employee
-import com.example.teamties.domain.repository.EmployeeRepository
+import com.example.teamties.core.model.Employee
+import com.example.teamties.feature.employees.domain.repository.EmployeeRepository
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
