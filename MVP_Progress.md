@@ -10,10 +10,6 @@
     - [ ] Configure `libs.versions.toml` (Version Catalog) for all dependencies.
     - [ ] Setup Hilt for Dependency Injection (`@HiltAndroidApp`, base modules).
     - [ ] Configure base package structure (`com.example.teamties.domain`, `.data`, `.presentation`).
-- [ ] **1.2 Security Infrastructure**
-    - [ ] Implement `EncryptedSharedPreferences` / `DataStore` wrapper for secure token storage.
-    - [ ] Setup `FLAG_SECURE` lifecycle observer for sensitive activities.
-    - [ ] Configure basic network security (HTTPS/TLS enforcement rules).
 
 ## Phase 2: Authentication & Session Management
 - [ ] **2.1 Domain Layer**
@@ -25,12 +21,7 @@
 - [ ] **2.3 Presentation Layer**
     - [x] Build `LoginScreen` using Jetpack Compose.
     - [ ] Implement `AuthViewModel` with `StateFlow` to handle loading, success, and error states.
-    - [ ] Implement secure reactive navigation (redirect to Login on session expiry).
-- [ ] **2.4 Testing & Security Validation**
-    - [ ] Write unit tests for `FakeAuthRepositoryImpl` (validate mock role assignment and JWT generation logic).
-    - [ ] Write unit tests for `LoginUseCase` to verify domain logic rules.
-    - [ ] UI Testing: Implement Compose tests for `LoginScreen` to verify input validation and state transitions.
-    - [ ] Security Check: Ensure passwords/tokens are cleared from memory immediately and never passed to `Log.d` or crashlytics.
+    - [ ] Implement secure reactive navigation.
 
 ## Phase 3: Employee Directory & Profiles
 - [ ] **3.1 Domain Layer**
