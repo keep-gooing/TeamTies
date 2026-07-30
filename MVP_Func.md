@@ -3,7 +3,7 @@
 
 **Technical Foundation:** The TeamTies application is strictly built on Android Clean Architecture principles, utilizing Jetpack Compose for the presentation layer, Hilt for Dependency Injection, and Kotlin Coroutines/Flow for asynchronous data streams. The core philosophy driving all modules is a **"Security First"** approach.
 
-## Authentication & Security (RBAC)
+## Authentication & Security
 - **Secure User Login:** Employees authenticate using corporate credentials. The system employs secure, encrypted communication (HTTPS/TLS) and validates JWT tokens. The UI relies on Jetpack Compose state management to ensure sensitive input is handled securely.
 - **Session Management:** Secure, encrypted token storage implemented exclusively via `EncryptedSharedPreferences` (or `DataStore` with security wrappers). The application enforces automatic, proactive logout upon session expiration or detected unauthorized environment anomalies.
 - **Role-based Access (RBAC):** Strict domain-level validation of permissions (e.g., Employee, Manager, Admin). The Jetpack Compose UI dynamically and securely adapts available components and navigation routes based on the verified role, preventing unauthorized access to restricted features.
