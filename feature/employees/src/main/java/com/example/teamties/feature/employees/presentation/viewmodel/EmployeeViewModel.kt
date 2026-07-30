@@ -1,9 +1,9 @@
-package com.example.teamties.presentation.viewmodel
+package com.example.teamties.feature.employees.presentation.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.teamties.domain.model.Employee
-import com.example.teamties.domain.usecase.GetEmployeesUseCase
+import com.example.teamties.core.model.Employee
+import com.example.teamties.feature.employees.domain.usecase.GetEmployeesUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
