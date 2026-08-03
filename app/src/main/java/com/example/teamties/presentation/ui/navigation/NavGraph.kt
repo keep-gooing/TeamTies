@@ -1,10 +1,5 @@
 package com.example.teamties.presentation.ui.navigation
-
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
@@ -12,10 +7,8 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.teamties.feature.auth.presentation.ui.LoginScreen
-import com.example.teamties.feature.auth.presentation.viewmodel.AuthViewModel
-import com.example.teamties.feature.employees.presentation.ui.EmployeeList
-import com.example.teamties.feature.employees.presentation.viewmodel.EmployeeViewModel
-
+import com.example.teamties.feature.employees.presentation.ui.DirectoryScreen
+import com.example.teamties.feature.employees.presentation.ui.EmployeeProfileScreen
 @Composable
 fun NavGraph(
     modifier: Modifier = Modifier,
@@ -28,9 +21,8 @@ fun NavGraph(
         modifier = modifier
     ) {
         composable(Screen.Login.route) {
-            val authViewModel: AuthViewModel = hiltViewModel()
             LoginScreen(
-                viewModel = authViewModel,
+                viewModel = hiltViewModel(),
                 onLoginSuccess = {
                     navController.navigate(Screen.Directory.route) {
                         popUpTo(Screen.Login.route) { inclusive = true }
@@ -39,15 +31,18 @@ fun NavGraph(
             )
         }
         composable(Screen.Directory.route) {
-            val employeeViewModel: EmployeeViewModel = hiltViewModel()
-            val employees by employeeViewModel.employees.collectAsState()
-
-            Scaffold { innerPadding ->
-                EmployeeList(
-                    employees = employees,
-                    modifier = Modifier.padding(innerPadding)
-                )
-            }
+            DirectoryScreen(
+                onEmployeeClick = { employeeId ->
+                    navController.navigate(Screen.Profile.createRoute(employeeId))
+                }
+            )
+        }
+        composable(Screen.Profile.route) {
+            EmployeeProfileScreen(
+                onBackClick = {
+                    navController.popBackStack()
+                }
+            )
         }
     }
 }
