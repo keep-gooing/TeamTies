@@ -1,5 +1,4 @@
 package com.example.teamties.feature.auth.presentation.viewmodel
-
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.teamties.core.model.Employee
@@ -13,7 +12,6 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
-
 @HiltViewModel
 class AuthViewModel @Inject constructor(
     private val loginUseCase: LoginUseCase,
@@ -21,14 +19,11 @@ class AuthViewModel @Inject constructor(
     private val checkSessionUseCase: CheckSessionUseCase,
     private val exceptionToMessageMapper: ExceptionToMessageMapper
 ) : ViewModel() {
-
-    private val _authState = MutableStateFlow<AuthState>(AuthState.Idle)
+    private val _authState = MutableStateFlow<AuthState>(AuthState.Unauthenticated)
     val authState: StateFlow<AuthState> = _authState.asStateFlow()
-
     init {
         checkSession()
     }
-
     fun login(email: String, password: String) {
         viewModelScope.launch {
             _authState.value = AuthState.Loading
@@ -37,13 +32,12 @@ class AuthViewModel @Inject constructor(
                     _authState.value = AuthState.Authenticated(user)
                 }.onFailure { exception ->
                     _authState.value = AuthState.Error(
-                        exceptionToMessageMapper.getLocalizedMessage(exception as Exception)
+                        exceptionToMessageMapper.getLocalizedMessage(exception)
                     )
                 }
             }
         }
     }
-
     fun logout() {
         viewModelScope.launch {
             _authState.value = AuthState.Loading
@@ -52,13 +46,12 @@ class AuthViewModel @Inject constructor(
                     _authState.value = AuthState.Unauthenticated
                 }.onFailure { exception ->
                     _authState.value = AuthState.Error(
-                        exceptionToMessageMapper.getLocalizedMessage(exception as Exception)
+                        exceptionToMessageMapper.getLocalizedMessage(exception)
                     )
                 }
             }
         }
     }
-
     private fun checkSession() {
         viewModelScope.launch {
             checkSessionUseCase().collect { isAuthenticated ->
@@ -69,9 +62,7 @@ class AuthViewModel @Inject constructor(
         }
     }
 }
-
 sealed interface AuthState {
-    data object Idle : AuthState
     data object Loading : AuthState
     data class Authenticated(val user: Employee) : AuthState
     data object Unauthenticated : AuthState
