@@ -1,5 +1,4 @@
 package com.example.teamties.core.ui.resources
-
 import android.content.Context
 import com.example.teamties.core.essentials.entities.HttpCode
 import com.example.teamties.core.essentials.entities.ServerCode
@@ -8,7 +7,6 @@ import com.example.teamties.core.ui.R
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 import javax.inject.Singleton
-
 @Singleton
 class AndroidCoreStringProvider @Inject constructor(
     @ApplicationContext private val context: Context
@@ -25,7 +23,6 @@ class AndroidCoreStringProvider @Inject constructor(
         get() = context.getString(R.string.action_delete)
     override val cancelAction: String
         get() = context.getString(R.string.action_cancel)
-
     override fun backendErrorMessage(
         serverCode: ServerCode,
         httpCode: HttpCode,

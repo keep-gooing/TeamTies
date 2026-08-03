@@ -28,6 +28,7 @@ dependencies {
     implementation(project(":core:ui"))
 
     implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.lifecycle.runtime.compose)
     implementation(libs.androidx.lifecycle.vm.compose)
     implementation(libs.androidx.hilt.nav.compose)
     implementation(platform(libs.androidx.compose.bom))
@@ -41,4 +42,5 @@ dependencies {
 
     implementation(libs.kotlinx.coroutines.android)
     implementation(libs.kotlinx.coroutines.core)
+    implementation(libs.coil.compose)
 }
