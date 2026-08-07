@@ -46,10 +46,10 @@ import com.example.teamties.feature.employees.presentation.viewmodel.EmployeeVie
 @Composable
 fun DirectoryScreen(
     onEmployeeClick: (String) -> Unit,
-    viewModel: EmployeeViewModel = hiltViewModel(),
+    uiState: DirectoryUiState,
+    searchQuery: String,
+    onSearchQueryChange: (String) -> Unit
 ) {
-    val uiState by viewModel.uiState.collectAsStateWithLifecycle()
-    val searchQuery by viewModel.searchQuery.collectAsStateWithLifecycle()
     Scaffold(
         topBar = {
             TopAppBar(
@@ -64,7 +64,7 @@ fun DirectoryScreen(
         ) {
             SearchBar(
                 query = searchQuery,
-                onQueryChange = viewModel::onSearchQueryChange,
+                onQueryChange = onSearchQueryChange,
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(16.dp)
@@ -103,6 +103,22 @@ fun DirectoryScreen(
             }
         }
     }
+}
+
+@Composable
+fun DirectoryScreen(
+    onEmployeeClick: (String) -> Unit,
+    viewModel: EmployeeViewModel = hiltViewModel(),
+) {
+    val uiState by viewModel.uiState.collectAsStateWithLifecycle()
+    val searchQuery by viewModel.searchQuery.collectAsStateWithLifecycle()
+    
+    DirectoryScreen(
+        onEmployeeClick = onEmployeeClick,
+        uiState = uiState,
+        searchQuery = searchQuery,
+        onSearchQueryChange = viewModel::onSearchQueryChange
+    )
 }
 @Composable
 fun SearchBar(
@@ -173,6 +189,24 @@ fun EmployeeListItem(
 @Composable
 fun DirectoryScreenPreview() {
     MaterialTheme {
-        DirectoryScreen(onEmployeeClick = {})
+        DirectoryScreen(
+            onEmployeeClick = {},
+            uiState = DirectoryUiState.Success(
+                listOf(
+                    Employee(
+                        id = "1",
+                        name = "Sarah Chen",
+                        position = "Senior Software Engineer",
+                        email = "sarah.chen@teamties.com",
+                        phoneNumber = "+1 (555) 010-1234",
+                        department = "Engineering",
+                        bio = "Passionate about clean code.",
+                        role = com.example.teamties.core.model.EmployeeRole.EMPLOYEE
+                    )
+                )
+            ),
+            searchQuery = "",
+            onSearchQueryChange = {}
+        )
     }
 }
