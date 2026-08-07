@@ -49,9 +49,8 @@ import com.example.teamties.feature.employees.presentation.viewmodel.EmployeePro
 @Composable
 fun EmployeeProfileScreen(
     onBackClick: () -> Unit,
-    viewModel: EmployeeProfileViewModel = hiltViewModel(),
+    uiState: EmployeeProfileUiState,
 ) {
-    val uiState by viewModel.uiState.collectAsStateWithLifecycle()
     val context = LocalContext.current
     Scaffold(
         topBar = {
@@ -194,10 +193,37 @@ fun EmployeeProfileScreen(
         }
     }
 }
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun EmployeeProfileScreen(
+    onBackClick: () -> Unit,
+    viewModel: EmployeeProfileViewModel = hiltViewModel(),
+) {
+    val uiState by viewModel.uiState.collectAsStateWithLifecycle()
+    EmployeeProfileScreen(
+        onBackClick = onBackClick,
+        uiState = uiState
+    )
+}
 @Preview(showBackground = true)
 @Composable
 fun EmployeeProfileScreenPreview() {
     MaterialTheme {
-        EmployeeProfileScreen(onBackClick = {})
+        EmployeeProfileScreen(
+            onBackClick = {},
+            uiState = EmployeeProfileUiState.Success(
+                com.example.teamties.core.model.Employee(
+                    id = "1",
+                    name = "Sarah Chen",
+                    position = "Senior Software Engineer",
+                    email = "sarah.chen@teamties.com",
+                    phoneNumber = "+1 (555) 010-1234",
+                    department = "Engineering",
+                    bio = "Passionate about clean code.",
+                    role = com.example.teamties.core.model.EmployeeRole.EMPLOYEE
+                )
+            )
+        )
     }
 }

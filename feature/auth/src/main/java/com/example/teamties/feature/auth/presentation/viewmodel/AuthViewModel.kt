@@ -27,28 +27,25 @@ class AuthViewModel @Inject constructor(
     fun login(email: String, password: String) {
         viewModelScope.launch {
             _authState.value = AuthState.Loading
-            loginUseCase(email, password).collect { result ->
-                result.onSuccess { user ->
-                    _authState.value = AuthState.Authenticated(user)
-                }.onFailure { exception ->
-                    _authState.value = AuthState.Error(
-                        exceptionToMessageMapper.getLocalizedMessage(exception)
-                    )
-                }
+            loginUseCase(email, password).onSuccess { user ->
+                _authState.value = AuthState.Authenticated(user)
+            }.onFailure { exception ->
+                _authState.value = AuthState.Error(
+                    exceptionToMessageMapper.getLocalizedMessage(exception)
+                )
             }
         }
     }
+
     fun logout() {
         viewModelScope.launch {
             _authState.value = AuthState.Loading
-            logoutUseCase().collect { result ->
-                result.onSuccess {
-                    _authState.value = AuthState.Unauthenticated
-                }.onFailure { exception ->
-                    _authState.value = AuthState.Error(
-                        exceptionToMessageMapper.getLocalizedMessage(exception)
-                    )
-                }
+            logoutUseCase().onSuccess {
+                _authState.value = AuthState.Unauthenticated
+            }.onFailure { exception ->
+                _authState.value = AuthState.Error(
+                    exceptionToMessageMapper.getLocalizedMessage(exception)
+                )
             }
         }
     }
