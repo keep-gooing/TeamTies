@@ -6,7 +6,6 @@ abstract class AbstractCoreAppException(
     cause: Throwable? = null,
 ) : AbstractAppException(message, cause), WithLocalizedMessage {
     override fun getLocalizedErrorMessage(stringProviderStore: StringProviderStore): String {
-        return getLocalizedErrorMessage(stringProviderStore<CoreStringProvider>())
+        return "General error"
     }
-    abstract fun getLocalizedErrorMessage(stringProvider: CoreStringProvider): String
 }
