@@ -6,8 +6,4 @@ class RateLimitException(
 ) : AbstractCoreAppException(
     message = "Too many requests.",
     cause = cause,
-) {
-    override fun getLocalizedErrorMessage(stringProvider: CoreStringProvider): String {
-        return stringProvider.tooManyRequests
-    }
-}
+)

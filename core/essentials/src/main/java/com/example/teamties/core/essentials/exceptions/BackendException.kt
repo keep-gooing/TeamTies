@@ -8,8 +8,4 @@ class BackendException(
     val serverCode: ServerCode = ServerCode(""),
     val backendMessage: String = "",
     cause: Throwable? = null,
-) : AbstractCoreAppException("Server error (serverCode=$serverCode, httpCode=$httpCode): $backendMessage", cause) {
-    override fun getLocalizedErrorMessage(stringProvider: CoreStringProvider): String {
-        return stringProvider.backendErrorMessage(serverCode, httpCode, backendMessage)
-    }
-}
+) : AbstractCoreAppException("Server error (serverCode=$serverCode, httpCode=$httpCode): $backendMessage", cause)
