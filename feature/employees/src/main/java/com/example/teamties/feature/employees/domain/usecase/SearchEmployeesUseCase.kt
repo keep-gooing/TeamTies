@@ -8,16 +8,6 @@ class SearchEmployeesUseCase @Inject constructor(
     private val repository: EmployeeRepository
 ) {
     operator fun invoke(query: String): Flow<List<Employee>> {
-        return repository.getEmployees().map { employees ->
-            if (query.isBlank()) {
-                employees
-            } else {
-                employees.filter { employee ->
-                    employee.name.contains(query, ignoreCase = true) ||
-                            employee.position.contains(query, ignoreCase = true) ||
-                            employee.department.contains(query, ignoreCase = true)
-                }
-            }
-        }
+        return repository.searchEmployees(query)
     }
 }
