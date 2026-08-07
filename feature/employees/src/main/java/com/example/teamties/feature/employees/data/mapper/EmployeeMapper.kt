@@ -4,11 +4,12 @@ import com.example.teamties.feature.employees.data.model.EmployeeDto
 fun EmployeeDto.toDomain() = Employee(
     id = id,
     name = "$firstName $lastName",
-    position = role,
+    position = position,
     email = email,
     phoneNumber = phone,
     department = dept,
     bio = biography,
+    role = role,
     photoUrl = avatarUrl,
     managerName = supervisor
 )
