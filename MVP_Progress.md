@@ -14,8 +14,8 @@
 ## Phase 2: Authentication & Session Management
 - [ ] **2.1 Domain Layer**
     - [x] Create `AuthRepository` interface.
-    - [ ] Implement `LoginUseCase`, `LogoutUseCase`, `CheckSessionUseCase`.
-    - [ ] Define RBAC (Role-Based Access Control) domain entities (e.g., `EmployeeRole` enum).
+    - [x] Implement `LoginUseCase`, `LogoutUseCase`, `CheckSessionUseCase`.
+    - [x] Define PBAC (Permission-Based Access Control) domain entities (e.g., `AppPermission` enum).
 - [ ] **2.2 Data Layer**
     - [x] Implement `FakeAuthRepositoryImpl` (mocking JWT and roles for MVP).
 - [ ] **2.3 Presentation Layer**
@@ -64,7 +64,7 @@
 - [ ] **6.3 Presentation Layer**
     - [ ] Build `InitiativesDashboardScreen` showing active projects and assigned tasks.
     - [ ] Build `InitiativeDetailScreen` and `TaskDetailScreen`.
-    - [ ] Implement RBAC UI checks (Managers see assign UI; Employees see status updates).
+    - [ ] Implement PBAC UI checks (Managers see assign UI; Employees see status updates).
 
 ## Phase 7: Corporate News Feed
 - [ ] **7.1 Domain Layer**

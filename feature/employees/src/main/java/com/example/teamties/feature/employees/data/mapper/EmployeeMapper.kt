@@ -9,7 +9,7 @@ fun EmployeeDto.toDomain() = Employee(
     phoneNumber = phone,
     department = dept,
     bio = biography,
-    role = role,
+    permissions = permissions,
     photoUrl = avatarUrl,
     managerName = supervisor
 )

@@ -7,7 +7,7 @@ data class Employee(
     val phoneNumber: String,
     val department: String,
     val bio: String,
-    val role: EmployeeRole,
+    val permissions: Set<AppPermission> = emptySet(),
     val photoUrl: String? = null,
     val managerName: String? = null
 )

@@ -16,11 +16,11 @@ class DefaultExceptionToMessageMapper @Inject constructor(
                 exception.httpCode,
                 exception.backendMessage
             )
-            is ConnectionException -> coreStringProvider.connectionErrorMessage
-            is InvalidBackendResponseException -> coreStringProvider.invalidBackendResponseErrorMessage
+            is ConnectionException -> coreStringProvider.connectionError
+            is InvalidBackendResponseException -> coreStringProvider.invalidBackendResponseError
             is RateLimitException -> coreStringProvider.tooManyRequests
             is WithLocalizedMessage -> exception.getLocalizedErrorMessage(stringProviderStore)
-            else -> exception.message ?: coreStringProvider.unknownErrorMessage
+            else -> exception.message ?: coreStringProvider.unknownError
         }
     }
 }

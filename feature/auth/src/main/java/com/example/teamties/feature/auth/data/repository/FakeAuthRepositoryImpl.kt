@@ -1,6 +1,9 @@
 package com.example.teamties.feature.auth.data.repository
+import com.example.teamties.core.essentials.error.General
+import com.example.teamties.feature.auth.domain.error.AuthError
+import com.example.teamties.core.essentials.error.Result
+import com.example.teamties.core.model.AppPermission
 import com.example.teamties.core.model.Employee
-import com.example.teamties.core.model.EmployeeRole
 import com.example.teamties.feature.auth.domain.repository.AuthRepository
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
@@ -13,7 +16,7 @@ import javax.inject.Singleton
 class FakeAuthRepositoryImpl @Inject constructor() : AuthRepository {
     private val _currentUser = MutableStateFlow<Employee?>(null)
 
-    override suspend fun login(email: String, password: String): Result<Employee> {
+    override suspend fun login(email: String, password: String): Result<Employee, General> {
         delay(1000)
         return if (email == "admin@teamties.com" && password == "admin123") {
             val user = Employee(
@@ -24,10 +27,10 @@ class FakeAuthRepositoryImpl @Inject constructor() : AuthRepository {
                 phoneNumber = "+1 (555) 000-0000",
                 department = "Operations",
                 bio = "System administrator for TeamTies.",
-                role = EmployeeRole.ADMIN
+                permissions = AppPermission.entries.toSet()
             )
             _currentUser.value = user
-            Result.success(user)
+            Result.Success(user)
         } else if (email == "employee@teamties.com" && password == "password123") {
             val user = Employee(
                 id = "emp-1",
@@ -37,18 +40,18 @@ class FakeAuthRepositoryImpl @Inject constructor() : AuthRepository {
                 phoneNumber = "+1 (555) 000-1111",
                 department = "Engineering",
                 bio = "Full-stack developer.",
-                role = EmployeeRole.EMPLOYEE
+                permissions = emptySet()
             )
             _currentUser.value = user
-            Result.success(user)
+            Result.Success(user)
         } else {
-            Result.failure(Exception("Invalid credentials"))
+            Result.Error(AuthError.InvalidCredentials)
         }
     }
 
-    override suspend fun logout(): Result<Unit> {
+    override suspend fun logout(): Result<Unit, General> {
         _currentUser.value = null
-        return Result.success(Unit)
+        return Result.Success(Unit)
     }
 
     override fun getCurrentUser(): Flow<Employee?> = _currentUser

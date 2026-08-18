@@ -39,7 +39,7 @@ a single large project into smaller, loosely coupled, and highly cohesive module
 
 ### Module Mapping (:app)
 - `domain/`: Business logic (Pure Kotlin).
-    - `model/`: `Employee.kt`, `EmployeeRole.kt`
+    - `model/`: `Employee.kt`, `AppPermission.kt`
     - `repository/`: `EmployeeRepository.kt`, `auth/AuthRepository.kt`
     - `usecase/`: `GetEmployeesUseCase.kt`, `auth/LoginUseCase.kt`, `auth/LogoutUseCase.kt`, `auth/CheckSessionUseCase.kt`
 - `data/`: Infrastructure.

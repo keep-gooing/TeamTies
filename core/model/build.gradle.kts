@@ -1,20 +1,19 @@
 plugins {
-    id("com.android.library")
+    id("java-library")
+    alias(libs.plugins.jetbrains.kotlin.jvm)
 }
 
-android {
-    namespace = "com.example.teamties.core.model"
-    compileSdk = 37
+java {
+    sourceCompatibility = JavaVersion.VERSION_11
+    targetCompatibility = JavaVersion.VERSION_11
+}
 
-    defaultConfig {
-        minSdk = 27
-    }
-
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+kotlin {
+    compilerOptions {
+        jvmTarget = org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_11
     }
 }
 
 dependencies {
+    testImplementation(libs.junit)
 }

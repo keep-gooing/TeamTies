@@ -11,11 +11,13 @@ import javax.inject.Singleton
 class AndroidCoreStringProvider @Inject constructor(
     @ApplicationContext private val context: Context
 ) : CoreStringProvider {
-    override val connectionErrorMessage: String
+    override val connectionError: String
         get() = context.getString(R.string.error_connection)
-    override val unknownErrorMessage: String
+    override val serverError: String
+        get() = context.getString(R.string.error_server)
+    override val unknownError: String
         get() = context.getString(R.string.error_unknown)
-    override val invalidBackendResponseErrorMessage: String
+    override val invalidBackendResponseError: String
         get() = context.getString(R.string.error_invalid_backend_response)
     override val tooManyRequests: String
         get() = context.getString(R.string.error_rate_limit)

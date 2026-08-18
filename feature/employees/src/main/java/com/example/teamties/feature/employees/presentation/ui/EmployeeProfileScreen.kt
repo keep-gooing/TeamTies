@@ -43,6 +43,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
+import com.example.teamties.core.model.AppPermission
 import com.example.teamties.feature.employees.presentation.viewmodel.EmployeeProfileUiState
 import com.example.teamties.feature.employees.presentation.viewmodel.EmployeeProfileViewModel
 @OptIn(ExperimentalMaterial3Api::class)
@@ -221,7 +222,7 @@ fun EmployeeProfileScreenPreview() {
                     phoneNumber = "+1 (555) 010-1234",
                     department = "Engineering",
                     bio = "Passionate about clean code.",
-                    role = com.example.teamties.core.model.EmployeeRole.EMPLOYEE
+                    permissions = emptySet()
                 )
             )
         )

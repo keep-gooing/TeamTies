@@ -1,6 +1,6 @@
 package com.example.teamties.feature.employees.data.repository
+import com.example.teamties.core.model.AppPermission
 import com.example.teamties.core.model.Employee
-import com.example.teamties.core.model.EmployeeRole
 import com.example.teamties.feature.employees.data.mapper.toDomain
 import com.example.teamties.feature.employees.data.model.EmployeeDto
 import com.example.teamties.feature.employees.domain.repository.EmployeeRepository
@@ -21,7 +21,7 @@ class FakeEmployeeRepositoryImpl @Inject constructor() : EmployeeRepository {
             phone = "+1 (555) 010-1234",
             dept = "Engineering",
             biography = "Passionate about clean code and scalable architecture. Leading the mobile infrastructure team.",
-            role = EmployeeRole.EMPLOYEE,
+            permissions = setOf(AppPermission.ACCESS_ADMIN_PANEL),
             avatarUrl = "https://i.pravatar.cc/150?u=1",
             supervisor = "David Miller"
         ),
@@ -34,7 +34,7 @@ class FakeEmployeeRepositoryImpl @Inject constructor() : EmployeeRepository {
             phone = "+1 (555) 010-5678",
             dept = "Design",
             biography = "Crafting intuitive user experiences for over 8 years. Design systems enthusiast.",
-            role = EmployeeRole.EMPLOYEE,
+            permissions = setOf(AppPermission.ACCESS_ADMIN_PANEL),
             avatarUrl = "https://i.pravatar.cc/150?u=2",
             supervisor = "Elena Rodriguez"
         ),
@@ -47,7 +47,7 @@ class FakeEmployeeRepositoryImpl @Inject constructor() : EmployeeRepository {
             phone = "+1 (555) 010-9012",
             dept = "Design",
             biography = "Visionary leader focused on building world-class creative teams.",
-            role = EmployeeRole.MANAGER,
+            permissions = setOf(AppPermission.MANAGE_EMPLOYEES, AppPermission.MANAGE_DEPARTMENTS, AppPermission.ACCESS_ADMIN_PANEL),
             avatarUrl = "https://i.pravatar.cc/150?u=3",
             supervisor = "CEO"
         ),
@@ -60,7 +60,7 @@ class FakeEmployeeRepositoryImpl @Inject constructor() : EmployeeRepository {
             phone = "+1 (555) 010-3456",
             dept = "Engineering",
             biography = "Helping engineers grow and delivering high-quality software products.",
-            role = EmployeeRole.MANAGER,
+            permissions = setOf(AppPermission.MANAGE_EMPLOYEES, AppPermission.MANAGE_DEPARTMENTS, AppPermission.ACCESS_ADMIN_PANEL),
             avatarUrl = "https://i.pravatar.cc/150?u=4",
             supervisor = "VP of Engineering"
         ),
@@ -73,7 +73,7 @@ class FakeEmployeeRepositoryImpl @Inject constructor() : EmployeeRepository {
             phone = "+1 (555) 010-7890",
             dept = "Human Resources",
             biography = "Dedicated to creating an inclusive and supportive workplace culture.",
-            role = EmployeeRole.EMPLOYEE,
+            permissions = setOf(AppPermission.MANAGE_EMPLOYEES),
             avatarUrl = "https://i.pravatar.cc/150?u=5",
             supervisor = "Robert Wilson"
         ),
@@ -86,7 +86,7 @@ class FakeEmployeeRepositoryImpl @Inject constructor() : EmployeeRepository {
             phone = "+1 (555) 010-2345",
             dept = "Marketing",
             biography = "Data-driven marketer with a focus on brand growth and engagement.",
-            role = EmployeeRole.EMPLOYEE,
+            permissions = setOf(AppPermission.ACCESS_ADMIN_PANEL),
             avatarUrl = "https://i.pravatar.cc/150?u=6",
             supervisor = "Linda Garcia"
         ),
@@ -99,7 +99,7 @@ class FakeEmployeeRepositoryImpl @Inject constructor() : EmployeeRepository {
             phone = "+1 (555) 010-6789",
             dept = "Data & Analytics",
             biography = "Extracting insights from complex data to drive business decisions.",
-            role = EmployeeRole.EMPLOYEE,
+            permissions = setOf(AppPermission.ACCESS_ADMIN_PANEL),
             avatarUrl = "https://i.pravatar.cc/150?u=7",
             supervisor = "David Miller"
         ),
@@ -112,7 +112,7 @@ class FakeEmployeeRepositoryImpl @Inject constructor() : EmployeeRepository {
             phone = "+1 (555) 010-0123",
             dept = "Engineering",
             biography = "Automation expert ensuring seamless deployments and system reliability.",
-            role = EmployeeRole.EMPLOYEE,
+            permissions = setOf(AppPermission.ACCESS_ADMIN_PANEL),
             avatarUrl = "https://i.pravatar.cc/150?u=8",
             supervisor = "David Miller"
         )

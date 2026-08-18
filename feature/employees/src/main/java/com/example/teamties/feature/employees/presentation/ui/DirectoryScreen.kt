@@ -39,6 +39,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
+import com.example.teamties.core.model.AppPermission
 import com.example.teamties.core.model.Employee
 import com.example.teamties.feature.employees.presentation.viewmodel.DirectoryUiState
 import com.example.teamties.feature.employees.presentation.viewmodel.EmployeeViewModel
@@ -201,7 +202,7 @@ fun DirectoryScreenPreview() {
                         phoneNumber = "+1 (555) 010-1234",
                         department = "Engineering",
                         bio = "Passionate about clean code.",
-                        role = com.example.teamties.core.model.EmployeeRole.EMPLOYEE
+                        permissions = emptySet()
                     )
                 )
             ),
