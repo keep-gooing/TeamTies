@@ -10,4 +10,8 @@ sealed class Screen(val route: String) {
     object Chat : Screen("chat/{channelId}") {
         fun createRoute(channelId: String) = "chat/$channelId"
     }
+    object WikiHome : Screen("wiki_home")
+    object Article : Screen("article/{articleId}") {
+        fun createRoute(articleId: String) = "article/$articleId"
+    }
 }

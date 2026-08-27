@@ -14,6 +14,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.MenuBook
 import androidx.compose.material.icons.filled.Chat
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.CircularProgressIndicator
@@ -21,6 +22,7 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -51,6 +53,7 @@ import com.example.teamties.feature.employees.presentation.viewmodel.EmployeeVie
 fun DirectoryScreen(
     onEmployeeClick: (String) -> Unit,
     onChatClick: () -> Unit,
+    onWikiClick: () -> Unit,
     uiState: DirectoryUiState,
     searchQuery: String,
     onSearchQueryChange: (String) -> Unit
@@ -58,7 +61,12 @@ fun DirectoryScreen(
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Employee Directory") }
+                title = { Text("Employee Directory") },
+                actions = {
+                    IconButton(onClick = onWikiClick) {
+                        Icon(Icons.AutoMirrored.Filled.MenuBook, contentDescription = "Knowledge Base")
+                    }
+                }
             )
         },
         floatingActionButton = {
@@ -119,6 +127,7 @@ fun DirectoryScreen(
 fun DirectoryScreen(
     onEmployeeClick: (String) -> Unit,
     onChatClick: () -> Unit,
+    onWikiClick: () -> Unit,
     viewModel: EmployeeViewModel = hiltViewModel(),
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
@@ -127,6 +136,7 @@ fun DirectoryScreen(
     DirectoryScreen(
         onEmployeeClick = onEmployeeClick,
         onChatClick = onChatClick,
+        onWikiClick = onWikiClick,
         uiState = uiState,
         searchQuery = searchQuery,
         onSearchQueryChange = viewModel::onSearchQueryChange
@@ -204,6 +214,7 @@ fun DirectoryScreenPreview() {
         DirectoryScreen(
             onEmployeeClick = {},
             onChatClick = {},
+            onWikiClick = {},
             uiState = DirectoryUiState.Success(
                 listOf(
                     Employee(

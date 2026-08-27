@@ -50,9 +50,9 @@
     - [x] Implement `GetWikiCategoriesUseCase` and `GetArticleDetailUseCase`.
 - [x] **5.2 Data Layer**
     - [x] Implement `FakeWikiRepositoryImpl`.
-- [ ] **5.3 Presentation Layer**
-    - [ ] Build `WikiHomeScreen` with category navigation.
-    - [ ] Build `ArticleScreen` with rich-text display capabilities.
+- [x] **5.3 Presentation Layer**
+    - [x] Build `WikiHomeScreen` with category navigation.
+    - [x] Build `ArticleScreen` with rich-text display capabilities.
 
 ## Phase 6: Joint Initiative / Project Spaces
 - [ ] **6.1 Domain Layer**

@@ -12,6 +12,8 @@ import com.example.teamties.feature.chat.presentation.ui.ChannelListScreen
 import com.example.teamties.feature.chat.presentation.ui.ChatScreen
 import com.example.teamties.feature.employees.presentation.ui.DirectoryScreen
 import com.example.teamties.feature.employees.presentation.ui.EmployeeProfileScreen
+import com.example.teamties.feature.wiki.presentation.ui.ArticleScreen
+import com.example.teamties.feature.wiki.presentation.ui.WikiHomeScreen
 @Composable
 fun NavGraph(
     modifier: Modifier = Modifier,
@@ -40,6 +42,9 @@ fun NavGraph(
                 },
                 onChatClick = {
                     navController.navigate(Screen.Channels.route)
+                },
+                onWikiClick = {
+                    navController.navigate(Screen.WikiHome.route)
                 }
             )
         }
@@ -63,6 +68,25 @@ fun NavGraph(
             ChatScreen(
                 viewModel = hiltViewModel(),
                 channelId = channelId,
+                onBackClick = {
+                    navController.popBackStack()
+                }
+            )
+        }
+        composable(Screen.WikiHome.route) {
+            WikiHomeScreen(
+                onArticleClick = { articleId ->
+                    navController.navigate(Screen.Article.createRoute(articleId))
+                },
+                onBackClick = {
+                    navController.popBackStack()
+                }
+            )
+        }
+        composable(Screen.Article.route) { backStackEntry ->
+            val articleId = backStackEntry.arguments?.getString("articleId") ?: return@composable
+            ArticleScreen(
+                articleId = articleId,
                 onBackClick = {
                     navController.popBackStack()
                 }
