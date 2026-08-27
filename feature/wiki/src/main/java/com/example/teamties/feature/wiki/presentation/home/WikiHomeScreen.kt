@@ -1,4 +1,4 @@
-package com.example.teamties.feature.wiki.presentation.ui
+package com.example.teamties.feature.wiki.presentation.home
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -19,14 +19,13 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.example.teamties.core.model.WikiArticle
 import com.example.teamties.core.model.WikiCategory
-import com.example.teamties.feature.wiki.presentation.viewmodel.WikiViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun WikiHomeScreen(
     onArticleClick: (String) -> Unit,
     onBackClick: () -> Unit,
-    viewModel: WikiViewModel = hiltViewModel()
+    viewModel: WikiHomeViewModel = hiltViewModel()
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 

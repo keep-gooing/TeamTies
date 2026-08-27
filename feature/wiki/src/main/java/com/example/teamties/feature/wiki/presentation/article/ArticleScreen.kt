@@ -1,4 +1,4 @@
-package com.example.teamties.feature.wiki.presentation.ui
+package com.example.teamties.feature.wiki.presentation.article
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
@@ -15,14 +15,13 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.example.teamties.feature.wiki.presentation.viewmodel.WikiViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ArticleScreen(
     articleId: String,
     onBackClick: () -> Unit,
-    viewModel: WikiViewModel = hiltViewModel()
+    viewModel: ArticleViewModel = hiltViewModel()
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 

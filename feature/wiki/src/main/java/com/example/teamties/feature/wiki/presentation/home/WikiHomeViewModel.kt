@@ -1,33 +1,31 @@
-package com.example.teamties.feature.wiki.presentation.viewmodel
+package com.example.teamties.feature.wiki.presentation.home
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.teamties.core.model.WikiArticle
 import com.example.teamties.core.model.WikiCategory
-import com.example.teamties.feature.wiki.domain.usecase.GetArticleDetailUseCase
+import com.example.teamties.feature.wiki.domain.usecase.GetArticlesByCategoryUseCase
 import com.example.teamties.feature.wiki.domain.usecase.GetWikiCategoriesUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-data class WikiUiState(
+data class WikiHomeUiState(
     val categories: List<WikiCategory> = emptyList(),
     val articlesByCategory: Map<String, List<WikiArticle>> = emptyMap(),
     val isLoading: Boolean = false,
-    val selectedArticle: WikiArticle? = null,
     val error: String? = null
 )
 
 @HiltViewModel
-class WikiViewModel @Inject constructor(
+class WikiHomeViewModel @Inject constructor(
     private val getWikiCategoriesUseCase: GetWikiCategoriesUseCase,
-    private val getArticlesByCategoryUseCase: com.example.teamties.feature.wiki.domain.usecase.GetArticlesByCategoryUseCase,
-    private val getArticleDetailUseCase: GetArticleDetailUseCase
+    private val getArticlesByCategoryUseCase: GetArticlesByCategoryUseCase
 ) : ViewModel() {
 
-    private val _uiState = MutableStateFlow(WikiUiState())
-    val uiState: StateFlow<WikiUiState> = _uiState.asStateFlow()
+    private val _uiState = MutableStateFlow(WikiHomeUiState())
+    val uiState: StateFlow<WikiHomeUiState> = _uiState.asStateFlow()
 
     init {
         loadData()
@@ -60,18 +58,6 @@ class WikiViewModel @Inject constructor(
                         )
                     }
                 }
-        }
-    }
-
-    fun loadArticle(articleId: String) {
-        viewModelScope.launch {
-            _uiState.update { it.copy(isLoading = true, selectedArticle = null) }
-            try {
-                val article = getArticleDetailUseCase(articleId)
-                _uiState.update { it.copy(isLoading = false, selectedArticle = article) }
-            } catch (e: Exception) {
-                _uiState.update { it.copy(isLoading = false, error = e.message) }
-            }
         }
     }
 }

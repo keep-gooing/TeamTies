@@ -12,8 +12,8 @@ import com.example.teamties.feature.chat.presentation.ui.ChannelListScreen
 import com.example.teamties.feature.chat.presentation.ui.ChatScreen
 import com.example.teamties.feature.employees.presentation.ui.DirectoryScreen
 import com.example.teamties.feature.employees.presentation.ui.EmployeeProfileScreen
-import com.example.teamties.feature.wiki.presentation.ui.ArticleScreen
-import com.example.teamties.feature.wiki.presentation.ui.WikiHomeScreen
+import com.example.teamties.feature.wiki.presentation.article.ArticleScreen
+import com.example.teamties.feature.wiki.presentation.home.WikiHomeScreen
 @Composable
 fun NavGraph(
     modifier: Modifier = Modifier,
