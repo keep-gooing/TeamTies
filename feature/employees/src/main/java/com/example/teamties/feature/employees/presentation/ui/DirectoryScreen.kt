@@ -1,4 +1,5 @@
 package com.example.teamties.feature.employees.presentation.ui
+
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -13,9 +14,11 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Chat
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -39,14 +42,15 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
-import com.example.teamties.core.model.AppPermission
 import com.example.teamties.core.model.Employee
 import com.example.teamties.feature.employees.presentation.viewmodel.DirectoryUiState
 import com.example.teamties.feature.employees.presentation.viewmodel.EmployeeViewModel
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun DirectoryScreen(
     onEmployeeClick: (String) -> Unit,
+    onChatClick: () -> Unit,
     uiState: DirectoryUiState,
     searchQuery: String,
     onSearchQueryChange: (String) -> Unit
@@ -56,6 +60,11 @@ fun DirectoryScreen(
             TopAppBar(
                 title = { Text("Employee Directory") }
             )
+        },
+        floatingActionButton = {
+            FloatingActionButton(onClick = onChatClick) {
+                Icon(Icons.Default.Chat, contentDescription = "Messages")
+            }
         }
     ) { paddingValues ->
         Column(
@@ -109,6 +118,7 @@ fun DirectoryScreen(
 @Composable
 fun DirectoryScreen(
     onEmployeeClick: (String) -> Unit,
+    onChatClick: () -> Unit,
     viewModel: EmployeeViewModel = hiltViewModel(),
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
@@ -116,6 +126,7 @@ fun DirectoryScreen(
     
     DirectoryScreen(
         onEmployeeClick = onEmployeeClick,
+        onChatClick = onChatClick,
         uiState = uiState,
         searchQuery = searchQuery,
         onSearchQueryChange = viewModel::onSearchQueryChange
@@ -192,6 +203,7 @@ fun DirectoryScreenPreview() {
     MaterialTheme {
         DirectoryScreen(
             onEmployeeClick = {},
+            onChatClick = {},
             uiState = DirectoryUiState.Success(
                 listOf(
                     Employee(
