@@ -38,11 +38,11 @@
 - [x] **4.1 Domain Layer**
     - [x] Define `Message`, `Channel`, and `ChatSession` entities.
     - [x] Implement `GetChannelsUseCase`, `SendMessageUseCase`, `ObserveMessagesUseCase`.
-- [x] **4.2 Data Layer**
-    - [x] Implement `FakeChatRepositoryImpl` (mocking WebSocket flow behavior with Kotlin `SharedFlow`/`Channel`).
-- [x] **4.3 Presentation Layer**
-    - [x] Build `ChannelListScreen` showing active conversations.
-    - [x] Build `ChatScreen` capable of real-time UI updates upon new message flows.
+- [] **4.2 Data Layer**
+    - [] Implement `FakeChatRepositoryImpl` (mocking WebSocket flow behavior with Kotlin `SharedFlow`/`Channel`).
+- [] **4.3 Presentation Layer**
+    - [] Build `ChannelListScreen` showing active conversations.
+    - [] Build `ChatScreen` capable of real-time UI updates upon new message flows.
 
 ## Phase 5: Knowledge Base (Corporate Wiki)
 - [x] **5.1 Domain Layer**

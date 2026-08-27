@@ -14,7 +14,6 @@ import javax.inject.Singleton
 
 @Singleton
 class FakeWikiRepositoryImpl @Inject constructor() : WikiRepository {
-
     private val _categories = MutableStateFlow(listOf(
         WikiCategoryDto("1", "Onboarding", "Essential info for new joiners"),
         WikiCategoryDto("2", "Benefits", "Health, 401k, and other perks"),
