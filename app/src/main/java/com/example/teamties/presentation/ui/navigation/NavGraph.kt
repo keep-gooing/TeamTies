@@ -83,10 +83,8 @@ fun NavGraph(
                 }
             )
         }
-        composable(Screen.Article.route) { backStackEntry ->
-            val articleId = backStackEntry.arguments?.getString("articleId") ?: return@composable
+        composable(Screen.Article.route) {
             ArticleScreen(
-                articleId = articleId,
                 onBackClick = {
                     navController.popBackStack()
                 }

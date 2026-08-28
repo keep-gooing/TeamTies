@@ -1,5 +1,6 @@
 package com.example.teamties.feature.wiki.presentation.article
 
+import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.teamties.core.model.WikiArticle
@@ -17,13 +18,20 @@ data class ArticleUiState(
 
 @HiltViewModel
 class ArticleViewModel @Inject constructor(
-    private val getArticleDetailUseCase: GetArticleDetailUseCase
+    private val getArticleDetailUseCase: GetArticleDetailUseCase,
+    savedStateHandle: SavedStateHandle
 ) : ViewModel() {
 
     private val _uiState = MutableStateFlow(ArticleUiState())
     val uiState: StateFlow<ArticleUiState> = _uiState.asStateFlow()
 
-    fun loadArticle(articleId: String) {
+    init {
+        savedStateHandle.get<String>("articleId")?.let { id ->
+            fetchArticle(id)
+        }
+    }
+
+    private fun fetchArticle(articleId: String) {
         viewModelScope.launch {
             _uiState.update { it.copy(isLoading = true, selectedArticle = null) }
             try {

@@ -7,7 +7,8 @@ import com.example.teamties.core.model.WikiCategory
 import com.example.teamties.feature.wiki.domain.usecase.GetArticlesByCategoryUseCase
 import com.example.teamties.feature.wiki.domain.usecase.GetWikiCategoriesUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.async
+import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -40,31 +41,22 @@ class WikiHomeViewModel @Inject constructor(
             _uiState.update { it.copy(isLoading = true, error = null) }
             try {
                 val categories = getWikiCategoriesUseCase()
-                _uiState.update { it.copy(categories = categories) }
-                
-                coroutineScope {
-                    categories.forEach { category ->
-                        launch {
-                            loadArticlesForCategory(category.id)
-                        }
+                val articlesMap = categories.map { category ->
+                    async {
+                        category.id to getArticlesByCategoryUseCase(category.id)
                     }
+                }.awaitAll().toMap()
+
+                _uiState.update { 
+                    it.copy(
+                        categories = categories,
+                        articlesByCategory = articlesMap,
+                        isLoading = false
+                    )
                 }
-                _uiState.update { it.copy(isLoading = false) }
             } catch (e: Exception) {
                 _uiState.update { it.copy(isLoading = false, error = e.message) }
             }
-        }
-    }
-
-    private suspend fun loadArticlesForCategory(categoryId: String) {
-        try {
-            val articles = getArticlesByCategoryUseCase(categoryId)
-            _uiState.update { state ->
-                state.copy(
-                    articlesByCategory = state.articlesByCategory + (categoryId to articles)
-                )
-            }
-        } catch (e: Exception) {
         }
     }
 }
