@@ -7,7 +7,11 @@ import com.example.teamties.core.model.WikiCategory
 import com.example.teamties.feature.wiki.domain.usecase.GetArticlesByCategoryUseCase
 import com.example.teamties.feature.wiki.domain.usecase.GetWikiCategoriesUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -38,8 +42,12 @@ class WikiHomeViewModel @Inject constructor(
                 val categories = getWikiCategoriesUseCase()
                 _uiState.update { it.copy(categories = categories) }
                 
-                categories.forEach { category ->
-                    loadArticlesForCategory(category.id)
+                coroutineScope {
+                    categories.forEach { category ->
+                        launch {
+                            loadArticlesForCategory(category.id)
+                        }
+                    }
                 }
                 _uiState.update { it.copy(isLoading = false) }
             } catch (e: Exception) {
@@ -48,19 +56,15 @@ class WikiHomeViewModel @Inject constructor(
         }
     }
 
-    private fun loadArticlesForCategory(categoryId: String) {
-        viewModelScope.launch {
-            try {
-                val articles = getArticlesByCategoryUseCase(categoryId)
-                _uiState.update { state ->
-                    state.copy(
-                        articlesByCategory = state.articlesByCategory + (categoryId to articles)
-                    )
-                }
-            } catch (e: Exception) {
-                // Articles for a specific category failed, but we might not want to show a global error
-                // For now, we just log it or ignore it, as categories are loaded
+    private suspend fun loadArticlesForCategory(categoryId: String) {
+        try {
+            val articles = getArticlesByCategoryUseCase(categoryId)
+            _uiState.update { state ->
+                state.copy(
+                    articlesByCategory = state.articlesByCategory + (categoryId to articles)
+                )
             }
+        } catch (e: Exception) {
         }
     }
 }
