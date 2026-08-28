@@ -6,9 +6,7 @@ import com.example.teamties.feature.wiki.data.mapper.toDomain
 import com.example.teamties.feature.wiki.data.model.WikiArticleDto
 import com.example.teamties.feature.wiki.data.model.WikiCategoryDto
 import com.example.teamties.feature.wiki.domain.repository.WikiRepository
-import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -39,14 +37,14 @@ class FakeWikiRepositoryImpl @Inject constructor() : WikiRepository {
         )
     ))
 
-    override fun getWikiCategories(): Flow<List<WikiCategory>> {
-        return _categories.map { list -> list.map { it.toDomain() } }
+    override suspend fun getWikiCategories(): List<WikiCategory> {
+        return _categories.value.map { it.toDomain() }
     }
 
-    override fun getArticlesByCategory(categoryId: String): Flow<List<WikiArticle>> {
-        return _articles.map { list ->
-            list.filter { it.categoryId == categoryId }.map { it.toDomain() }
-        }
+    override suspend fun getArticlesByCategory(categoryId: String): List<WikiArticle> {
+        return _articles.value
+            .filter { it.categoryId == categoryId }
+            .map { it.toDomain() }
     }
 
     override suspend fun getArticleDetail(articleId: String): WikiArticle? {

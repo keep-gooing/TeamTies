@@ -33,31 +33,34 @@ class WikiHomeViewModel @Inject constructor(
 
     private fun loadData() {
         viewModelScope.launch {
-            _uiState.update { it.copy(isLoading = true) }
-            getWikiCategoriesUseCase()
-                .catch { e ->
-                    _uiState.update { it.copy(isLoading = false, error = e.message) }
+            _uiState.update { it.copy(isLoading = true, error = null) }
+            try {
+                val categories = getWikiCategoriesUseCase()
+                _uiState.update { it.copy(categories = categories) }
+                
+                categories.forEach { category ->
+                    loadArticlesForCategory(category.id)
                 }
-                .collect { categories ->
-                    _uiState.update { it.copy(categories = categories) }
-                    categories.forEach { category ->
-                        loadArticlesForCategory(category.id)
-                    }
-                    _uiState.update { it.copy(isLoading = false) }
-                }
+                _uiState.update { it.copy(isLoading = false) }
+            } catch (e: Exception) {
+                _uiState.update { it.copy(isLoading = false, error = e.message) }
+            }
         }
     }
 
     private fun loadArticlesForCategory(categoryId: String) {
         viewModelScope.launch {
-            getArticlesByCategoryUseCase(categoryId)
-                .collect { articles ->
-                    _uiState.update { state ->
-                        state.copy(
-                            articlesByCategory = state.articlesByCategory + (categoryId to articles)
-                        )
-                    }
+            try {
+                val articles = getArticlesByCategoryUseCase(categoryId)
+                _uiState.update { state ->
+                    state.copy(
+                        articlesByCategory = state.articlesByCategory + (categoryId to articles)
+                    )
                 }
+            } catch (e: Exception) {
+                // Articles for a specific category failed, but we might not want to show a global error
+                // For now, we just log it or ignore it, as categories are loaded
+            }
         }
     }
 }
