@@ -27,8 +27,6 @@ class ChatViewModel @Inject constructor(
 
     init {
         loadChannels()
-        
-        // If we have a channelId in savedState, start observing it
         savedStateHandle.get<String>("channelId")?.let { channelId ->
             observeChannel(channelId)
         }
