@@ -5,6 +5,7 @@ import com.example.teamties.feature.wiki.domain.repository.WikiRepository
 import javax.inject.Inject
 
 //rebase practice
+//stash practice
 class GetWikiCategoriesUseCase @Inject constructor(
     private val repository: WikiRepository
 ) {
