@@ -44,6 +44,10 @@ class ChatViewModel @Inject constructor(
             .launchIn(viewModelScope)
     }
 
+    fun setUserTyping(isTyping: Boolean) {
+        _chatState.update { it.copy(isTyping = isTyping) }
+    }
+
     fun observeChannel(channelId: String) {
         observeMessagesUseCase(channelId)
             .onStart { _chatState.update { it.copy(isLoading = true) } }

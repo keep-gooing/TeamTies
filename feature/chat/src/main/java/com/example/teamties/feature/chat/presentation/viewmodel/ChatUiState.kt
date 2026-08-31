@@ -13,5 +13,6 @@ data class ChatUiState(
     val channel: Channel? = null,
     val messages: List<Message> = emptyList(),
     val isLoading: Boolean = false,
-    val error: String? = null
+    val error: String? = null,
+    val isTyping: Boolean = false
 )
