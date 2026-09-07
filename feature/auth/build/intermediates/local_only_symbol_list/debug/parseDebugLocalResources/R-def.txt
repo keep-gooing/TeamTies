@@ -1,0 +1,7 @@
+R_DEF: Internal format may change without notice
+local
+string email_label
+string login_button
+string login_hint
+string login_title
+string password_label

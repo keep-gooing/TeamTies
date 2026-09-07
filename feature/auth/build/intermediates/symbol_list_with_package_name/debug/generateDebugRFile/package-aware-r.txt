@@ -1,0 +1,6 @@
+com.example.teamties.feature.auth
+string email_label
+string login_button
+string login_hint
+string login_title
+string password_label

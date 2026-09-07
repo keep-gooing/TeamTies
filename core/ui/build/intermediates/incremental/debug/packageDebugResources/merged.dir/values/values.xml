@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="action_cancel">Cancel</string>
+    <string name="action_delete">Delete</string>
+    <string name="error_backend">Server error (%1$s): %2$s</string>
+    <string name="error_connection">No internet connection. Please check your network settings.</string>
+    <string name="error_invalid_backend_response">Received an invalid response from the server.</string>
+    <string name="error_rate_limit">Too many requests. Please wait a moment before trying again.</string>
+    <string name="error_server">A server error occurred. Please try again later.</string>
+    <string name="error_unknown">An unknown error occurred. Please try again later.</string>
+</resources>

@@ -1,0 +1,8 @@
+com.example.teamties.feature.employees-pngs-0 /Users/user/AndroidStudioProjects/TeamTies/feature/employees/build/generated/res/pngs/debug
+com.example.teamties.feature.employees-updated_navigation_xml-1 /Users/user/AndroidStudioProjects/TeamTies/feature/employees/build/generated/updated_navigation_xml/debug
+com.example.teamties.feature.employees-mergeDebugResources-2 /Users/user/AndroidStudioProjects/TeamTies/feature/employees/build/intermediates/incremental/debug/mergeDebugResources/merged.dir
+com.example.teamties.feature.employees-mergeDebugResources-3 /Users/user/AndroidStudioProjects/TeamTies/feature/employees/build/intermediates/incremental/debug/mergeDebugResources/stripped.dir
+com.example.teamties.feature.employees-debug-4 /Users/user/AndroidStudioProjects/TeamTies/feature/employees/build/intermediates/merged_res/debug/mergeDebugResources
+com.example.teamties.feature.employees-debug-5 /Users/user/AndroidStudioProjects/TeamTies/feature/employees/build/intermediates/packaged_res/debug/packageDebugResources
+com.example.teamties.feature.employees-debug-6 /Users/user/AndroidStudioProjects/TeamTies/feature/employees/src/debug/res
+com.example.teamties.feature.employees-main-7 /Users/user/AndroidStudioProjects/TeamTies/feature/employees/src/main/res

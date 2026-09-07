@@ -1,0 +1,9 @@
+com.example.teamties.core.ui
+string action_cancel
+string action_delete
+string error_backend
+string error_connection
+string error_invalid_backend_response
+string error_rate_limit
+string error_server
+string error_unknown

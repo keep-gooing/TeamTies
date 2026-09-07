@@ -1,0 +1,1 @@
+-keep,allowobfuscation,allowshrinking class com.example.teamties.feature.chat.presentation.viewmodel.ChatViewModel

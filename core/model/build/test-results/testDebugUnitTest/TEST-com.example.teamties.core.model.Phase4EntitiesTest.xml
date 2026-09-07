@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.example.teamties.core.model.Phase4EntitiesTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2026-08-07T07:29:22.653Z" hostname="MacBook-Pro-user.local" time="0.007">
+  <properties/>
+  <testcase name="channelCreation" classname="com.example.teamties.core.model.Phase4EntitiesTest" time="0.004"/>
+  <testcase name="chatSessionInitialState" classname="com.example.teamties.core.model.Phase4EntitiesTest" time="0.001"/>
+  <testcase name="messageDefaultValues" classname="com.example.teamties.core.model.Phase4EntitiesTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

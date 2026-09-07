@@ -1,0 +1,1 @@
+com.example.teamties.core.essentials

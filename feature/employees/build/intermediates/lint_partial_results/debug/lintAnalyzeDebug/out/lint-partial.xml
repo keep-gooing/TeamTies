@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<incidents format="6" by="lint 9.1.1" type="partial_results">
+    <map id="UnsafeImplicitIntentLaunch">
+            <map id="actionsSent">
+                    <map id="android.intent.action.DIAL (used to start an activity)">
+                        <location id="0"
+                            file="${:feature:employees*debug*MAIN*sourceProvider*0*javaDir*0}/com/example/teamties/feature/employees/presentation/ui/EmployeeProfileScreen.kt"
+                            line="165"
+                            column="46"
+                            startOffset="7549"
+                            endLine="165"
+                            endColumn="72"
+                            endOffset="7575"/>
+                    </map>
+                    <map id="android.intent.action.SENDTO (used to start an activity)">
+                        <location id="0"
+                            file="${:feature:employees*debug*MAIN*sourceProvider*0*javaDir*0}/com/example/teamties/feature/employees/presentation/ui/EmployeeProfileScreen.kt"
+                            line="150"
+                            column="46"
+                            startOffset="6761"
+                            endLine="150"
+                            endColumn="74"
+                            endOffset="6789"/>
+                    </map>
+            </map>
+    </map>
+    <map id="UnusedResources">
+        <entry
+            name="model"
+            string=""/>
+    </map>
+
+</incidents>

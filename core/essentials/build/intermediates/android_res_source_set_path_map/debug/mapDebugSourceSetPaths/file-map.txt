@@ -1,0 +1,8 @@
+com.example.teamties.core.essentials-pngs-0 /Users/user/AndroidStudioProjects/TeamTies/core/essentials/build/generated/res/pngs/debug
+com.example.teamties.core.essentials-updated_navigation_xml-1 /Users/user/AndroidStudioProjects/TeamTies/core/essentials/build/generated/updated_navigation_xml/debug
+com.example.teamties.core.essentials-mergeDebugResources-2 /Users/user/AndroidStudioProjects/TeamTies/core/essentials/build/intermediates/incremental/debug/mergeDebugResources/merged.dir
+com.example.teamties.core.essentials-mergeDebugResources-3 /Users/user/AndroidStudioProjects/TeamTies/core/essentials/build/intermediates/incremental/debug/mergeDebugResources/stripped.dir
+com.example.teamties.core.essentials-debug-4 /Users/user/AndroidStudioProjects/TeamTies/core/essentials/build/intermediates/merged_res/debug/mergeDebugResources
+com.example.teamties.core.essentials-debug-5 /Users/user/AndroidStudioProjects/TeamTies/core/essentials/build/intermediates/packaged_res/debug/packageDebugResources
+com.example.teamties.core.essentials-debug-6 /Users/user/AndroidStudioProjects/TeamTies/core/essentials/src/debug/res
+com.example.teamties.core.essentials-main-7 /Users/user/AndroidStudioProjects/TeamTies/core/essentials/src/main/res

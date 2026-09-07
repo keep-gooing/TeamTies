@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<incidents format="6" by="lint 9.1.1" type="partial_results">
+    <map id="UnusedResources">
+        <entry
+            name="model"
+            string="string[error_connection(U),error_server(U),error_unknown(U),error_invalid_backend_response(U),error_rate_limit(U),error_backend(U),action_delete(U),action_cancel(U)];;;;"/>
+    </map>
+
+</incidents>
