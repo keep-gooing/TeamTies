@@ -6,6 +6,7 @@ import javax.inject.Inject
 
 //rebase practice
 //stash practice
+//cherry-pick
 class GetWikiCategoriesUseCase @Inject constructor(
     private val repository: WikiRepository
 ) {
