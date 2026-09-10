@@ -12,6 +12,7 @@ import javax.inject.Inject
 //change list
 //part 1 to Squash
 //part 2 to Squash
+//temp 1
 
 class GetWikiCategoriesUseCase @Inject constructor(
     private val repository: WikiRepository
