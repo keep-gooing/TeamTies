@@ -9,6 +9,10 @@ import javax.inject.Inject
 //cherry-pick
 // temporary change for cherry-pick
 // temporary change for cherry-pick 2.0
+//change list
+//part 1 to Squash
+//part 2 to Squash
+
 class GetWikiCategoriesUseCase @Inject constructor(
     private val repository: WikiRepository
 ) {
