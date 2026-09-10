@@ -14,6 +14,9 @@ import javax.inject.Inject
 //part 2 to Squash
 //temp 1 (Reword)
 //temp 2 (Edit - Edited)
+//temp 2 (Edit)
+//part 1 (Squash)
+//part 2 (Squash)
 
 class GetWikiCategoriesUseCase @Inject constructor(
     private val repository: WikiRepository
