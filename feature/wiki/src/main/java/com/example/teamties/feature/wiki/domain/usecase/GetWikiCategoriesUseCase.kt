@@ -20,6 +20,7 @@ import javax.inject.Inject
 //reset soft
 //reset mixed
 //reset hard
+//reset keep
 
 class GetWikiCategoriesUseCase @Inject constructor(
     private val repository: WikiRepository
