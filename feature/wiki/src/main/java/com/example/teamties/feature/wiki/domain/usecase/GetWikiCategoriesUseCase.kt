@@ -18,6 +18,7 @@ import javax.inject.Inject
 //part 1 (Squash)
 //part 2 (Squash)
 //reset soft
+//reset mixed
 
 class GetWikiCategoriesUseCase @Inject constructor(
     private val repository: WikiRepository
